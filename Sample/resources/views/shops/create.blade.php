@@ -25,13 +25,16 @@
 @csrf
 <div class="container">
 <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">新規作成画面</div>
                 <div class="card-body">
-                  <form action="{{ route('shops.store') }}" method="POST">
+                
+                  <form action="{{ route('shops.store') }}" method="POST" enctype="multipart/form-data">
                   @csrf
+                  <input type="file" name="image" accept="image/png, image/jpeg">
                     <div class="form-group row">
+
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('店名') }}</label>
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}"　placeholder="店名を入れる">

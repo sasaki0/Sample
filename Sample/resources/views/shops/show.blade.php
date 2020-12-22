@@ -16,11 +16,18 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
             <div class="card-header">詳細</div>
                 <div class="card-body">
                     @csrf
+                    <div class="form-group row">
+                        <label for="image" class="col-md-4 col-form-label text-md-right"></label>
+                            <img src="../../uploads/{{ $shop->image }}" width="320px" height="200px">
+                    
+                    </div>
+                    
+
                     <div class="form-group row">
                         <label for="name" class="col-md-4 col-form-label text-md-right"><h5>{{ __('店名') }}</h5></label>
                         <div class="col-md-6 input-group-text">
@@ -65,12 +72,13 @@
                     　　</div>
                    </div>
 
-                   
-                   <iframe id='map' src='https://www.google.com/maps/embed/v1/place?key=AIzaSyB7ktdfK_XxXZMVBTQzF8x72jmf73wR3Ys&amp;q={{ $shop->access }}'
+                   <div class="form-group row">
+                   <iframe id='map' src='https://www.google.com/maps/embed/v1/place?key=AIzaSyB7ktdfK_XxXZMVBTQzF8x72jmf73wR3Ys&amp;q={{ $shop->name}}'
                             width='100%'
                             height='320'
                             frameborder='0'>
                     </iframe>
+                    </div>
                     
                     
                     
@@ -128,11 +136,11 @@
                             {{ $shop->site_url }}
                         </div>
                     </div>
-                    <div id="player"></div>
+                    <!-- <div id="player"></div> -->
                     
 
                     <div class="form-group row">
-                        <label for="business_time" class="col-md-4 col-form-label text-md-right"><a href="/"><h3>{{ __('ホームに戻る') }}</h3></a></label>
+                        <label for="business_time" class="col-md-4 col-form-label text-md-right"><a href="/"><h3>{{ __('検索画面へ戻る') }}</h3></a></label>
                         @auth
                         @if($shop->user_id === $login_id)
                         <label for="business_time" class="col-md-4 col-form-label"><a href="/shops/{{$shop->id}}/edit"><h3>{{ __('編集する') }}</h3></a></label>

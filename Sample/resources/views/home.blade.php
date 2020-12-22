@@ -15,6 +15,10 @@
                     @endif
 
                     <a href="/shops/create">新規作成画面へ</a><br><br>
+                    <a href="/shops/{{auth()->user()->id}}">編集画面へ</a><br><br>
+                    <a href="/">検索画面へ</a>
+                    
+
                     
                   
                 </div>

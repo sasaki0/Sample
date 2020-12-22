@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Shop;
 
@@ -40,9 +41,5 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function home($id)
-    {
-        $shop=User::find($id);
-        return view('home',['shop'=>$shop]);
-    }
+   
 }

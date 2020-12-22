@@ -48,6 +48,14 @@ class ShopController extends Controller
             $address = new Address;
             $user = \Auth::user();
 
+            if ($file = $request->image) {
+                $fileName = time() . $file->getClientOriginalName();
+                $target_path = public_path('uploads/');
+                $file->move($target_path, $fileName);
+            } else {
+                $fileName = "";
+            }
+
             $shop->name = request('name');
             $hour->start = request('start');
             $hour->end = request('end');
@@ -64,6 +72,7 @@ class ShopController extends Controller
             $shop->tel = request('tel');
             $shop->email = request('email');
             $shop->site_url = request('site_url');
+            $shop->image = $fileName;
             $shop->user_id = $user->id;
 
             $shop->save();
@@ -122,6 +131,14 @@ class ShopController extends Controller
             $hour = Hour::find($id);
             $address = Address::find($id);
 
+            if ($file = $request->image) {
+                $fileName = time() . $file->getClientOriginalName();
+                $target_path = public_path('uploads/');
+                $file->move($target_path, $fileName);
+            } else {
+                $fileName = "";
+            }
+
             $shop->name = request('name');
             $hour->start = request('start');
             $hour->end = request('end');
@@ -138,6 +155,7 @@ class ShopController extends Controller
             $shop->tel = request('tel');
             $shop->email = request('email');
             $shop->site_url = request('site_url');
+            $shop->image = $fileName;
 
             $shop->save();
             $hour->save();

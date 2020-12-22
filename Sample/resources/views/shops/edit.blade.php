@@ -25,13 +25,20 @@
 @csrf
 <div class="container">
 <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">{{$shop->name}}を編集する</div>
                 <div class="card-body">
-                <form action="/shops/{{ $shop->id }}" method="POST">
+                <form action="/shops/{{ $shop->id }}" method="POST" enctype="multipart/form-data">
                 @method('PATCH')
                   @csrf
+                  <div class="alert alert-danger" role="alert">
+                    ※画像ファイルを再度選択してください！！
+                　</div>
+                  <input type="file" name="image" accept="image/png, image/jpeg" >
+                  <img src="../../uploads/{{ $shop->image }}" width="320px" height="200px">
+                  
+
                     <div class="form-group row">
                     <label for="business_time" class="col-md-4 col-form-label text-md-right">{{ __('店名') }}</label>
                             <div class="col-md-6">
