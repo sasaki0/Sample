@@ -84,7 +84,7 @@
                     @auth
                         <a href="{{ url('/home') }}">ホーム</a>
                     @else
-                    　　<a href="{{ route('admin.login') }}">管理者ログイン</a>
+                    　　
                         <a href="{{ route('login') }}">ログイン</a>
 
                         @if (Route::has('register'))
